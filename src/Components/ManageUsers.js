@@ -17,7 +17,7 @@ const ManageUsers = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/user")
+      .get("https://telegrambotbackend-production.up.railway.app/user")
       .then((res) => {
         console.log(res.data);
         setUsers(res.data);
@@ -29,7 +29,7 @@ const ManageUsers = () => {
 
   const changeStatus = async (chatId, status) => {
     const res = await axios.put(
-      `http://localhost:8000/user/${chatId}`,
+      `https://telegrambotbackend-production.up.railway.app/user/${chatId}`,
       {
         status: status,
       }
@@ -49,7 +49,7 @@ const ManageUsers = () => {
 
   const deleteUser = async (chatId) => {
     const res = await axios.delete(
-      `http://localhost:8000/user/${chatId}`
+      `https://telegrambotbackend-production.up.railway.app/user/${chatId}`
     );
     console.log(res);
     window.alert("User deleted");
