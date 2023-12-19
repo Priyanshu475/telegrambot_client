@@ -58,7 +58,7 @@ const ManageBotSettings = () => {
   return (
     <div>
       <Typography variant="h6" gutterBottom>
-        Manage the bot
+        Enter new telegram bot token
       </Typography>
       <form onSubmit={handleSubmit}>
         <Stack direction="row" spacing={2}>
