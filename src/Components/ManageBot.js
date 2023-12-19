@@ -21,7 +21,7 @@ const authenticateToken = async (token) => {
 
 const updateToken = async (token) => {
   const res = await axios.put(
-    `https://botserver-production.up.railway.app/bot/${token}`
+    `http://localhost:8000/bot/${token}`
   );
   console.log(res);
 };
