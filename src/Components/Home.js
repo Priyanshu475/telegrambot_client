@@ -1,62 +1,62 @@
-import { useState, useEffect } from "react";
-import { Container, Typography, Button, Paper } from "@mui/material";
+import React, { useState, useEffect } from "react";
+import { Container, Typography, Paper, Grid } from "@mui/material";
 import jwt_decode from "jwt-decode";
-import { Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 import Login from "./Login";
-import LogoutButton from "./Logout";
 
 const styles = {
   body: {
-    background: '#f2f2f2', // Set your preferred background color here
-    margin: 0, // Remove any default margin to fill the entire viewport
-    minHeight: '100vh', // Makes sure the page fills the entire viewport height
+    background: '#D5D5D5',
+    minHeight: '100vh',
     display: 'flex',
-    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
   },
   paper: {
-    padding: '16px',
+    padding: '32px',
     textAlign: 'center',
+    maxWidth: '400px',
+  },
+  welcomeText: {
+    marginBottom: '16px',
+  },
+  loginButton: {
+    marginTop: '16px',
   },
 };
+
 const Home = () => {
   const [credentialResponse, setCredentialResponse] = useState(null);
   const [user, setUser] = useState(null);
-  // const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   useEffect(() => {
     if (credentialResponse !== null) {
       var decoded = jwt_decode(credentialResponse.credential);
-      console.log(decoded);
       setUser(decoded.name);
     }
   }, [credentialResponse]);
 
-  if (user) {
-    console.log(user);
-  }
-
   return (
     <div style={styles.body}>
       {user === null ? (
-        <div>
-          <Container maxWidth="sm">
-            <Paper elevation={3} style={styles.paper}>
-              <Typography variant="h4" gutterBottom>
-                Welcome to Weather Bot Admin Panel
-              </Typography>
-              <Typography variant="subtitle1">
-                Please login to access the dashboard.
-              </Typography>
-              <Login setCredentialResponse={setCredentialResponse} />
-            </Paper>
-          </Container>
-        </div>
+        <Container>
+          <Grid container justifyContent="center" alignItems="center">
+            <Grid item xs={12} sm={8} md={6} lg={4}>
+              <Paper elevation={3} style={styles.paper}>
+                <Typography variant="h4" style={styles.welcomeText}>
+                  Welcome to Weather Bot Admin Panel
+                </Typography>
+                <Typography variant="subtitle1" gutterBottom>
+                  Please login to access the dashboard.
+                </Typography>
+                <center><Login setCredentialResponse={setCredentialResponse} /></center>
+              </Paper>
+            </Grid>
+          </Grid>
+        </Container>
       ) : (
         <div>
-          {localStorage.setItem('user', user)}
           <Navigate to="/dashboard" />
         </div>
       )}
