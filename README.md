@@ -21,7 +21,7 @@ $ npm install
 ## Running the app
 
 ```bash
-# start backend
+# start frontend
 $ npm start
 ```
 
