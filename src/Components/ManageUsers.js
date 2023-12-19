@@ -17,7 +17,7 @@ const ManageUsers = () => {
 
   useEffect(() => {
     axios
-      .get("https://botserver-production.up.railway.app/user")
+      .get("http://localhost:8000/user")
       .then((res) => {
         console.log(res.data);
         setUsers(res.data);
@@ -29,7 +29,7 @@ const ManageUsers = () => {
 
   const changeStatus = async (chatId, status) => {
     const res = await axios.put(
-      `https://botserver-production.up.railway.app/user/${chatId}`,
+      `http://localhost:8000/user/${chatId}`,
       {
         status: status,
       }
@@ -49,7 +49,7 @@ const ManageUsers = () => {
 
   const deleteUser = async (chatId) => {
     const res = await axios.delete(
-      `https://botserver-production.up.railway.app/user/${chatId}`
+      `http://localhost:8000/user/${chatId}`
     );
     console.log(res);
     window.alert("User deleted");
