@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Container, Typography, Button, Paper, Divider } from "@mui/material";
+import {  Typography, Divider } from "@mui/material";
 
-import LogoutButton from "./Logout";
-import ManageBotSettings from "./ManageBot";
 import ManageUsers from "./ManageUsers";
+import Navbar from "./Navbar";
 
 const dashboardStyles = {
-  background: "#f2f2f2",
+  background: "white",
   minHeight: "100vh",
   display: "flex",
   flexDirection: "column",
@@ -31,6 +30,8 @@ const Dashboard = () => {
   }, []);
 
   return (
+    <div>
+      <Navbar/>
     <div style={dashboardStyles}>
       <div style={contentStyles}>
         {user ? (
@@ -46,28 +47,16 @@ const Dashboard = () => {
             </Typography>
           </>
         )}
-        <p>Dashboard</p>
+        <h1>Dashboard</h1>
       </div>
-      <LogoutButton />
-
-      <Divider variant="middle" />
-
-      <div style={contentStyles}>
-        <Typography variant="h5" gutterBottom>
-          Update Bot Settings
-        </Typography>
-        <ManageBotSettings />
-      </div>
-
-      <Divider variant="middle" />
-      
-
+      <Divider variant="middle" />      
       <div style={contentStyles}>
         <Typography variant="h5" gutterBottom>
           Manage Subscribers
         </Typography>
         <ManageUsers />
       </div>
+    </div>
     </div>
   );
 };
