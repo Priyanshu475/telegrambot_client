@@ -21,7 +21,7 @@ const authenticateToken = async (token) => {
 
 const updateToken = async (token) => {
   const res = await axios.put(
-    `http://localhost:8000/bot/${token}`
+    `https://telegrambotbackend-production.up.railway.app/bot/${token}`
   );
   console.log(res);
 };
